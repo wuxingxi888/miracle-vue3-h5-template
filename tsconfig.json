@@ -1,0 +1,75 @@
+// tsconfig.json
+{
+	"compilerOptions": {
+		"composite": true,
+		// 设置JavaScript目标版本
+		"target": "ESNext",
+		// 在类字段中使用define属性
+		"useDefineForClassFields": true,
+		// 设置 baseUrl 用于模块名称和路径的解析
+		"baseUrl": "./",
+		// 设置模块系统
+		"module": "ESNext",
+		// 定义使用的库
+		"lib": ["ESNext", "DOM", "DOM.Iterable", "scripthost"],
+		// 跳过对声明文件（.d.ts）的类型检查
+		"skipLibCheck": true,
+		// 定义路径映射
+		"paths": {
+			"@/*": ["src/*"],
+			"#/*": ["types/*"]
+		},
+
+		/* Bundler mode */
+		// 设置模块解析策略
+		"moduleResolution": "Node",
+		// 允许从.ts文件中导入
+		"allowImportingTsExtensions": true,
+		// 将每个文件视为独立的模块
+		"isolatedModules": true,
+		// 强制模块检测
+		// "moduleDetection": "force",
+		// 不输出编译结果
+		"noEmit": true,
+		// 保留jsx语法
+		"jsx": "preserve",
+		// 生成源码映射文件
+		"sourceMap": true,
+		// 允许默认导入
+		"allowSyntheticDefaultImports": true,
+		// 允许解析json模块
+		"resolveJsonModule": true,
+		// 启用esModuleInterop
+		"esModuleInterop": true,
+		// 不允许隐式any类型
+		"noImplicitAny": false,
+
+		/* Linting */
+		// 启用严格类型检查
+		"strict": true,
+		// 不允许未使用的局部变量
+		"noUnusedLocals": true,
+		// 不允许未使用的参数
+		"noUnusedParameters": true,
+		// 不允许switch语句中有未处理的case
+		"noFallthroughCasesInSwitch": true,
+		// 每个分支都要有返回值
+		"noImplicitReturns": true,
+
+		// 定义类型检查的入口点
+		"types": ["vite/client", "vite-plugin-svg-icons/client", "node"]
+	},
+	// 包含的文件模式
+	"include": [
+		"src/**/*",
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"src/**/*.vue",
+		"types/**/*.d.ts",
+		"mock/**/*.ts",
+		"build/**/*.ts",
+		"vite.config.ts"
+	],
+	// 排除的文件模式
+	"exclude": ["node_modules", "dist", "**/*.js"]
+}
