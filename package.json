@@ -32,7 +32,9 @@
 		"preview:dist": "vite preview",
 		"lint": "eslint",
 		"lint:fix": "eslint --fix",
-		"preinstall": "npx only-allow pnpm"
+		"lint:lint-staged": "lint-staged -c ./.husky/_/lint-staged.js",
+		"preinstall": "npx only-allow pnpm",
+		"postinstall": "husky install"
 	},
 	"dependencies": {
 		"@miracle-web/ui": "^0.0.3",
@@ -50,6 +52,8 @@
 		"vue-router": "^4.4.5"
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^19.6.0",
+		"@commitlint/config-conventional": "^19.6.0",
 		"@eslint/js": "^9.13.0",
 		"@iconify/json": "^2.2.265",
 		"@miracle-web/auto-import-resolver": "^0.0.1",
@@ -67,12 +71,15 @@
 		"@vitejs/plugin-vue": "^5.1.4",
 		"@vitejs/plugin-vue-jsx": "^4.0.1",
 		"autoprefixer": "^10.4.20",
+		"cz-git": "^1.11.0",
 		"eslint": "^9.13.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-define-config": "^2.1.0",
 		"eslint-plugin-prettier": "^5.2.1",
 		"eslint-plugin-vue": "^9.30.0",
 		"globals": "^15.11.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.2.10",
 		"postcss": "^8.4.32",
 		"postcss-mobile-forever": "4.2.3",
 		"prettier": "^3.3.3",
@@ -101,6 +108,15 @@
 	},
 	"resolutions": {
 		"bin-wrapper": "npm:bin-wrapper-china"
+	},
+	"simple-git-hooks": {
+		"pre-commit": "pnpm lint-staged",
+		"commit-msg": "npx --no-install commitlint --edit $1"
+	},
+	"config": {
+		"commitizen": {
+			"path": "node_modules/cz-git"
+		}
 	},
 	"packageManager": "pnpm@9.11.0+sha1.4cd20e68438613738e8f2bc9aece61eaa6b3e649"
 }

@@ -1,0 +1,6 @@
+# pre-commit
+
+#!/usr/bin/sh
+. "$(dirname "$0")/h"
+
+lint:lint-staged
