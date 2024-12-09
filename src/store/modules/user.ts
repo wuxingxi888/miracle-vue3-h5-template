@@ -1,4 +1,4 @@
-import { defineStore, type StateTree } from 'pinia'
+import { acceptHMRUpdate, defineStore, type StateTree } from 'pinia'
 import { store } from '@/store'
 import { doLogout, getUserInfo, login } from '@/api/system/user'
 import { PageEnum } from '@/enums/pageEnum'
@@ -87,8 +87,8 @@ export const useUserStore = defineStore({
 					console.error('注销Token失败')
 				}
 			}
-			this.setToken(undefined)
-			this.setUserInfo(null)
+			this.setToken('')
+			this.setUserInfo({} as UserInfo)
 			router.push(PageEnum.BASE_LOGIN)
 			location.reload()
 		}
@@ -111,6 +111,10 @@ export const useUserStore = defineStore({
 		}
 	}
 })
+
+if (import.meta.hot) {
+	import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot))
+}
 
 // Need to be used outside the setup
 export function useUserStoreWidthOut() {

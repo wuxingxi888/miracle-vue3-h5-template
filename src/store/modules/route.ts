@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { acceptHMRUpdate, defineStore } from 'pinia'
 import type { RouteRecordRaw } from 'vue-router'
 import { store } from '@/store'
 
@@ -33,6 +33,10 @@ export const useRouteStore = defineStore({
 		}
 	}
 })
+
+if (import.meta.hot) {
+	import.meta.hot.accept(acceptHMRUpdate(useRouteStore, import.meta.hot))
+}
 
 // Need to be used outside the setup
 export function useRouteStoreWidthOut() {

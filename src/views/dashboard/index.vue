@@ -66,6 +66,7 @@
 		'⌛️ 内置JS与原生（Android/iOS）交互的封装',
 		'🤔 内置openInstall,完成App渠道引流传参功能',
 		'📦 Components、Hooks、Utils、Vue 的全自动导入，“0” 引入，彻底解放双手',
+		'📦 plop代码模版一键生成，节约开发时间',
 		'🥳 完善的登录系统、路由、Axios配置,所有基础设施已搭建完毕，你可以直接开发你的业务需求'
 	]
 </script>

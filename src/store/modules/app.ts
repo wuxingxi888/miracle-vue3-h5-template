@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import { acceptHMRUpdate, defineStore } from 'pinia'
 import { store } from '@/store'
 import { asyncLoadScript, removeScript } from '@/utils/script'
 
@@ -33,6 +33,10 @@ export const useAppStore = defineStore({
 		}
 	}
 })
+
+if (import.meta.hot) {
+	import.meta.hot.accept(acceptHMRUpdate(useAppStore, import.meta.hot))
+}
 
 // Need to be used outside the setup
 export function useAppStoreWidthOut() {

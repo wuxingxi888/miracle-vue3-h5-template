@@ -30,11 +30,11 @@
 		"clean": "rm -rf node_modules && rm -rf .eslintcache && rm -rf dist && pnpm install",
 		"preview": "pnpm run build:prod && vite preview --port 5050",
 		"preview:dist": "vite preview",
+		"new": "plop",
 		"lint": "eslint",
 		"lint:fix": "eslint --fix",
 		"lint:lint-staged": "lint-staged -c ./.husky/_/lint-staged.js",
-		"preinstall": "npx only-allow pnpm",
-		"postinstall": "husky install"
+		"preinstall": "npx only-allow pnpm"
 	},
 	"dependencies": {
 		"@miracle-web/ui": "^0.0.3",
@@ -80,6 +80,7 @@
 		"globals": "^15.11.0",
 		"husky": "^9.1.7",
 		"lint-staged": "^15.2.10",
+		"plop": "^4.0.1",
 		"postcss": "^8.4.32",
 		"postcss-mobile-forever": "4.2.3",
 		"prettier": "^3.3.3",
