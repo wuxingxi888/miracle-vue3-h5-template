@@ -10,7 +10,7 @@ NProgress.configure({ parent: '#app' })
 // 路由白名单
 const whitePathList = [PageEnum.BASE_LOGIN]
 export function createRouterGuards(router: Router) {
-	router.beforeEach(async (to, from, next) => {
+	router.beforeEach(async (to, _from, next) => {
 		NProgress.start()
 
 		if (whitePathList.includes(to.path as PageEnum)) {

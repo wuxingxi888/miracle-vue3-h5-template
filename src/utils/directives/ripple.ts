@@ -121,7 +121,7 @@ function setBackground(el: HTMLElement, background: string | null) {
 function createRippleElement(
 	dx: number,
 	dy: number,
-	radius: number,
+	_radius: number,
 	transition: number,
 	background: string,
 	zIndex: string

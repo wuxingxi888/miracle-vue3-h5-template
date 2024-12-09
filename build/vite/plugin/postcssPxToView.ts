@@ -5,6 +5,7 @@
  */
 
 import viewport from 'postcss-mobile-forever'
+import { Plugin } from 'postcss'
 
 // 设定默认视口宽度值
 const DEFAULT_VIEWPORT_WIDTH = 375
@@ -18,7 +19,7 @@ function ensureString(value: any): string {
 	return value
 }
 
-export function postcssPxToViewProtConfig() {
+export function postcssPxToViewProtConfig(): Plugin {
 	// 确保传入的文件名是字符串
 	const getFileWidth = (file: string) => {
 		file = ensureString(file)

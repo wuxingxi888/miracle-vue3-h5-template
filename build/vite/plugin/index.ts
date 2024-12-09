@@ -56,7 +56,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 	vitePlugins.push(configSvgIconsPlugin(isBuild))
 
 	// 加载 html 插件 vite-plugin-html
-	vitePlugins.push(configHtmlPlugin(viteEnv, isBuild))
+	vitePlugins.push(configHtmlPlugin(viteEnv))
 
 	// 编译开启
 	if (isBuild) {

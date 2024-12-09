@@ -10,7 +10,7 @@ export const configCdnImportPlugin = () => {
 		modules: [
 			'vue',
 			'vue-router',
-			'axios',
+			// 'axios',
 			{
 				name: 'vue-demi',
 				var: 'VueDemi',

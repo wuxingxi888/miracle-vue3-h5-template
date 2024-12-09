@@ -85,7 +85,7 @@ export default [
 
 	// 忽略文件
 	{
-		ignores: ['**/dist', '**/node_modules', '**/*.d.ts', '/public']
+		ignores: ['**/dist', '**/node_modules', '**/*.d.ts', '/public', '/plop-templates']
 	},
 
 	/**
