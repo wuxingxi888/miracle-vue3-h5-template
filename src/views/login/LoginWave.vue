@@ -62,7 +62,7 @@
 		position: relative;
 		display: block;
 		width: 100%;
-		height: 50px;
+		height: 70px;
 		min-height: 40px;
 		max-height: 80px;
 	}
