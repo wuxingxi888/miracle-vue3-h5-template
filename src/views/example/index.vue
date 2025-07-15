@@ -70,6 +70,7 @@
 		{ title: 'SVG图标', route: '/svgIcon', icon: 'i-hugeicons:svg-02' },
 		{ title: 'unoCss', route: '/unoCss', icon: 'i-ic:twotone-css' },
 		{ title: '滚动缓存', route: '/scrollCache', icon: 'i-ri:scroll-to-bottom-fill' },
+		{ title: '列表刷新加载', route: '/pullRefreshList', icon: 'i-svg-spinners-90-ring-with-bg' },
 		{
 			title: 'GITHUB',
 			route: '/webview?title=GITHUB&url=https://github.com/wuxingxi888',

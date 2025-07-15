@@ -59,7 +59,7 @@
 
 		<mi-divider>滑动当前列表切换到子页面，返回当前页面看缓存效果</mi-divider>
 
-		<div class="p-20px">
+		<div class="p-[20px]">
 			<mi-pull-refresh
 				v-model="refreshing"
 				@refresh="onRefresh"
@@ -72,7 +72,7 @@
 				>
 					<mi-cell
 						mb-1
-						v-for="item in 100"
+						v-for="item in list"
 						:key="item"
 						:title="item"
 					/>

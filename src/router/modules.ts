@@ -2,6 +2,15 @@ import type { RouteRecordRaw } from 'vue-router'
 
 const routeModuleList: Array<RouteRecordRaw> = [
 	{
+		path: '/pullRefreshList',
+		name: 'PullRefreshList',
+		meta: {
+			title: '列表刷新加载',
+			keepAlive: false
+		},
+		component: () => import('@/views/example/pullRefreshList/index.vue')
+	},
+	{
 		path: '/scrollCache',
 		name: 'ScrollCache',
 		meta: {

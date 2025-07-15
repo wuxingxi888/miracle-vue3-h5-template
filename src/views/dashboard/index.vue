@@ -1,8 +1,15 @@
 <script setup lang="ts">
 	import { useEnv } from '@/hooks/useEnv'
+	import { useScrollCache } from '@/hooks/useScrollCache'
+
+	defineOptions({
+		name: 'Dashboard'
+	})
 
 	const { getEnvConfig } = useEnv()
 	const { title } = getEnvConfig()
+
+	const cacheBox = ref(null)
 
 	// 技术栈信息
 	const stacks = [
@@ -69,34 +76,41 @@
 		'📦 plop代码模版一键生成，节约开发时间',
 		'🥳 完善的登录系统、路由、Axios配置,所有基础设施已搭建完毕，你可以直接开发你的业务需求'
 	]
+
+	onMounted(() => {
+		useScrollCache(cacheBox.value)
+	})
 </script>
 
 <template>
-	<div class="h-screen w-full p-15px">
+	<div
+		class="h-screen w-full p-[15px]"
+		ref="cacheBox"
+	>
 		<!-- Header -->
 		<header class="flex flex-col items-center mt-20">
 			<Logo class="!h-20 !w-20" />
 			<h1 class="title text-darkBlue dark:text-garyWhite mb-4 mt-5 text-center text-2xl font-black">
 				{{ title }}
 			</h1>
-			<p class="text-color-regular text-14px">简单完善.开箱即用 🎁</p>
+			<p class="text-color-regular text-[14px]">简单完善.开箱即用 🎁</p>
 		</header>
 
 		<!-- 简介 -->
-		<section class="mt-30px">
-			<h3 class="font-black text-18px dark:text-garyWhite">简介</h3>
-			<p class="text-color-regular text-14px lh-26px mt-10px">
+		<section class="mt-[30px]">
+			<h3 class="font-black text-[18px] dark:text-garyWhite">简介</h3>
+			<p class="text-color-regular text-[14px] leading-[26px] mt-[10px]">
 				{{ title }} 是一个基于前端前沿技术栈、干净、开箱即用的前端H5解决方案。
 				提供完善的前端H5开发环境，快速启动项目，为专注业务实现与开发，提高开发效率而生，也可用于学习参考。
 			</p>
 		</section>
 
 		<!-- 技术栈 -->
-		<section class="mt-30px">
-			<h3 class="font-black text-18px dark:text-garyWhite">技术栈</h3>
+		<section class="mt-[30px]">
+			<h3 class="font-black text-[18px] dark:text-garyWhite">技术栈</h3>
 			<mi-space
 				wrap
-				class="mt-10px"
+				class="mt-[10px]"
 			>
 				<img
 					v-for="stack in stacks"
@@ -108,11 +122,11 @@
 		</section>
 
 		<!-- 协同方案 -->
-		<section class="mt-30px">
-			<h3 class="font-black text-18px dark:text-garyWhite">协同方案</h3>
+		<section class="mt-[30px]">
+			<h3 class="font-black text-[18px] dark:text-garyWhite">协同方案</h3>
 			<mi-space
 				wrap
-				class="mt-10px"
+				class="mt-[10px]"
 			>
 				<img
 					v-for="item in scheme"
@@ -124,13 +138,13 @@
 		</section>
 
 		<!-- 优点 -->
-		<section class="mt-30px">
-			<h3 class="font-black text-18px dark:text-garyWhite">优点</h3>
-			<ul class="mt-10px">
+		<section class="mt-[30px]">
+			<h3 class="font-black text-[18px] dark:text-garyWhite">优点</h3>
+			<ul class="mt-[10px]">
 				<li
 					v-for="(merit, index) in merits"
 					:key="index"
-					class="text-color-regular text-14px lh-26px"
+					class="text-color-regular text-[14px] leading-[26px]"
 				>
 					{{ index + 1 }}. {{ merit }}
 				</li>

@@ -1,22 +1,21 @@
 <template>
 	<div class="h-screen flex flex-col">
-		<routerView class="flex-1 overflow-x-hidden">
-			<template #default="{ Component, route }">
-				<keep-alive
-					v-if="keepAliveComponents"
-					:include="keepAliveComponents"
-				>
-					<component
-						:is="Component"
-						:key="route.fullPath"
-					/>
-				</keep-alive>
+		<routerView
+			class="flex-1 overflow-x-hidden"
+			v-slot="{ Component, route }"
+		>
+			<keep-alive :include="keepAliveComponents">
 				<component
+					v-if="route.meta.keepAlive"
 					:is="Component"
-					v-else
 					:key="route.fullPath"
 				/>
-			</template>
+			</keep-alive>
+			<component
+				v-if="!route.meta.keepAlive"
+				:is="Component"
+				:key="route.fullPath"
+			/>
 		</routerView>
 
 		<mi-tabbar
@@ -25,7 +24,7 @@
 			placeholder
 		>
 			<mi-tabbar-item
-				v-for="menu in getMenus"
+				v-for="menu in getMenus[0].children"
 				:key="menu.name"
 				replace
 				:to="menu.path"

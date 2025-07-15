@@ -4,84 +4,48 @@ const Layout = () => import('@/layout/index.vue')
 
 const menuRouteList: Array<RouteRecordRaw> = [
 	{
-		path: '/dashboard',
-		name: 'Dashboard',
-		redirect: '/dashboard/index',
+		path: '/',
+		name: '',
+		redirect: '/dashboard',
 		component: Layout,
-		meta: {
-			title: '主控台',
-			icon: 'i-mage:dashboard-2-fill'
-		},
 		children: [
 			{
-				path: 'index',
-				name: 'DashboardPage',
+				path: '/dashboard',
+				name: 'Dashboard',
 				meta: {
-					keepAlive: false
+					title: '主控台',
+					icon: 'i-mage:dashboard-2-fill',
+					keepAlive: true
 				},
 				component: () => import('@/views/dashboard/index.vue')
-			}
-		]
-	},
-
-	{
-		path: '/example',
-		name: 'Example',
-		redirect: '/example/index',
-		component: Layout,
-		meta: {
-			title: '示例',
-			icon: 'i-mingcute:list-expansion-fill'
-		},
-		children: [
+			},
 			{
-				path: 'index',
-				name: 'ExamplePage',
+				path: '/example',
+				name: 'Example',
 				meta: {
+					title: '示例',
+					icon: 'i-mingcute:list-expansion-fill',
 					keepAlive: false
 				},
 				component: () => import('@/views/example/index.vue')
-			}
-		]
-	},
-
-	{
-		path: '/chart',
-		name: 'Chart',
-		redirect: '/chart/index',
-		component: Layout,
-		meta: {
-			title: '图表',
-			icon: 'i-bxs:chart'
-		},
-		children: [
+			},
 			{
-				path: 'index',
-				name: 'ChartPage',
+				path: '/chart',
+				name: 'Chart',
 				meta: {
+					title: '图表',
+					icon: 'i-bxs:chart',
 					keepAlive: false
 				},
 				component: () => import('@/views/chart/index.vue')
-			}
-		]
-	},
-
-	{
-		path: '/mine',
-		name: 'Mine',
-		redirect: '/mine/index',
-		component: Layout,
-		meta: {
-			title: '我的',
-			icon: 'i-tabler:brand-minecraft'
-		},
-		children: [
+			},
 			{
-				path: 'index',
-				name: 'MinePage',
+				path: '/mine',
+				name: 'Mine',
 				meta: {
-					keepAlive: false,
-					hiddenHeader: true
+					title: '我的',
+					icon: 'i-tabler:brand-minecraft',
+					keepAlive: false
 				},
 				component: () => import('@/views/mine/index.vue')
 			}
