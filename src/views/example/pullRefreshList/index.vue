@@ -1,16 +1,46 @@
 <script setup lang="ts">
-	import PullRefreshList from '@/components/PullRefreshList/index.vue'
+	import PullRefreshList, { type PullRefreshListInstance } from '@/components/PullRefreshList/index.vue'
+	import { showToast } from '@miracle-web/ui'
 
 	defineOptions({ name: 'PullRefreshList' })
 
-	const loading = ref(false)
-	const refreshing = ref(false)
-	const finished = ref(false)
-	const loadError = ref(false)
+	interface ListItem {
+		id: number
+		name: string
+	}
+	// 模拟数据
+	const getMockData = ({ pageNo, pageSize }: { pageNo: number; pageSize: number }) => {
+		showToast(`正在加载第${pageNo}页`)
+		const total = 55
 
-	const list = ref<number[]>([])
+		const allData = Array.from({ length: total }, (_, i) => ({
+			id: i + 1,
+			name: `姓名${Math.random().toString(36).substring(2, 8)}`
+		}))
+
+		// 计算分页
+		const start = (pageNo - 1) * pageSize
+		const end = start + pageSize
+		const data = allData.slice(start, end)
+
+		return { total, data }
+	}
+
+	const pullRefreshListRef = ref<PullRefreshListInstance<ListItem>>()
 
 	const disabledRefresh = ref(false)
+
+	const onLoadData = async (pageNo: number, pageSize: number) => {
+		try {
+			const { data, total } = await getMockData({ pageNo, pageSize })
+			if (data) {
+				pullRefreshListRef.value?.updateList(data, total)
+			}
+		} catch (error) {
+			console.log('🚀 ~ onLoadData ~ error:', error)
+			pullRefreshListRef.value?.setError()
+		}
+	}
 
 	// 切换是否刷新
 	const toggleRefresh = () => {
@@ -19,38 +49,7 @@
 
 	// 模拟加载失败
 	const simulateLoadError = () => {
-		loadError.value = true
-	}
-
-	const onLoad = () => {
-		setTimeout(() => {
-			if (refreshing.value) {
-				list.value = []
-				refreshing.value = false
-			}
-
-			for (let i = 0; i < 10; i++) {
-				list.value.push(list.value.length + 1)
-			}
-
-			loading.value = false
-			loadError.value = false
-
-			if (list.value.length >= 50) {
-				finished.value = true
-			}
-		}, 1000)
-	}
-
-	const onRefresh = () => {
-		finished.value = false
-		loading.value = true
-		onLoad()
-	}
-
-	const retryLoad = () => {
-		loading.value = true
-		onLoad()
+		pullRefreshListRef.value?.setError()
 	}
 </script>
 
@@ -76,29 +75,24 @@
 			</mi-button>
 		</mi-space>
 
-		<div class="h-[calc(100vh-86px)] overflow-y-scroll">
-			<pull-refresh-list
-				v-model:loading="loading"
-				v-model:refreshing="refreshing"
-				:finished="finished"
-				:error="loadError"
-				:disabled="disabledRefresh"
-				@on-refresh="onRefresh"
-				@on-load="onLoad"
-				@on-load-error="retryLoad"
-			>
-				<template #default>
-					<div class="p-2">
-						<mi-cell
-							mb-1
-							v-for="item in list"
-							:key="item"
-							:title="item"
-						/>
-					</div>
-				</template>
-			</pull-refresh-list>
-		</div>
+		<pull-refresh-list
+			ref="pullRefreshListRef"
+			class="!h-[calc(100vh-86px)] !overflow-y-scroll"
+			:disabled="disabledRefresh"
+			@on-load="onLoadData"
+		>
+			<template #list="{ list }">
+				<div class="p-[10px] space-y-[10px]">
+					<mi-cell
+						class="rounded-lg"
+						v-for="item in list"
+						:key="item.id"
+						:title="item.id"
+						:value="item.name"
+					/>
+				</div>
+			</template>
+		</pull-refresh-list>
 	</div>
 </template>
 

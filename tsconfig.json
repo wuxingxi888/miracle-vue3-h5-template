@@ -57,7 +57,7 @@
 		"noImplicitReturns": true,
 
 		// 定义类型检查的入口点
-		"types": ["vite/client", "vite-plugin-svg-icons/client", "node"]
+		"types": ["vite/client", "vite-plugin-svg-icons/client", "node", "vue"]
 	},
 	// 包含的文件模式
 	"include": [

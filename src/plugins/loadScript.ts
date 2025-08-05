@@ -7,7 +7,7 @@ const { getEnvMode } = useEnv()
  */
 export const useLoadScript = () => {
 	if (getEnvMode() !== 'production') {
-		asyncLoadScript({ src: 'https://cdn.jsdelivr.net/npm/eruda', id: 'eruda' }).then(() => {
+		asyncLoadScript({ src: 'https://cdn.bootcdn.net/ajax/libs/eruda/3.4.3/eruda.min.js', id: 'eruda' }).then(() => {
 			window.eruda.init()
 		})
 	}

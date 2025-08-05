@@ -1,7 +1,7 @@
 import scrollUtil from './scrollUtil'
 
 /**
- * useScrollCache 页面缓存
+ * useScrollCache 页面缓存（支持水平和垂直滚动）
  * 1.确保页面有keepAlive属性
  * 2.确保页面文件名称和路由name字段名称一致
  * 3.如果不一致（可设置页面组件名称）如：	defineOptions({ name: 'ScrollCache' })
@@ -10,12 +10,15 @@ import scrollUtil from './scrollUtil'
  * @returns
  */
 export function useScrollCache(dom, animeStatus = false) {
-	const scrollTop = ref(0)
+	const scrollPosition = ref({ top: 0, left: 0 })
 	const duration = 200
 
 	dom.onscroll = () => {
-		const result = scrollUtil({ dom })
-		scrollTop.value = result.scrollTop
+		scrollUtil({ dom })
+		scrollPosition.value = {
+			top: dom.scrollTop,
+			left: dom.scrollLeft
+		}
 	}
 
 	const route = useRoute()
@@ -29,20 +32,34 @@ export function useScrollCache(dom, animeStatus = false) {
 	}
 
 	onActivated(() => {
-		const maxScrollTop = scrollTop.value
-		const split = maxScrollTop / 10
-		const anime = async () => {
-			if (dom.scrollTop + 50 >= maxScrollTop) return
-			dom.scrollTop = dom.scrollTop + split
-			await new Promise<void>((resolve) => {
-				setTimeout(() => {
-					resolve()
-				}, duration / 10)
-			})
-			anime()
+		const targetPosition = scrollPosition.value
+		const animateScroll = () => {
+			const startTime = Date.now()
+			const startTop = dom.scrollTop
+			const startLeft = dom.scrollLeft
+
+			const animate = () => {
+				const elapsed = Date.now() - startTime
+				const progress = Math.min(elapsed / duration, 1)
+
+				dom.scrollTop = startTop + (targetPosition.top - startTop) * progress
+				dom.scrollLeft = startLeft + (targetPosition.left - startLeft) * progress
+
+				if (progress < 1) {
+					requestAnimationFrame(animate)
+				}
+			}
+
+			requestAnimationFrame(animate)
 		}
-		animeStatus ? anime() : (dom.scrollTop = maxScrollTop)
+
+		if (animeStatus) {
+			animateScroll()
+		} else {
+			dom.scrollTop = targetPosition.top
+			dom.scrollLeft = targetPosition.left
+		}
 	})
 
-	return scrollTop
+	return scrollPosition
 }

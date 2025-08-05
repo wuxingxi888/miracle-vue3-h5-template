@@ -1,7 +1,7 @@
 import DisableDevtool from 'disable-devtool'
 import { useEnv } from '@/hooks/useEnv'
 
-const { isDevMode } = useEnv()
+const { getEnvMode } = useEnv()
 
 /**
  * 禁用web开发者工具
@@ -9,7 +9,7 @@ const { isDevMode } = useEnv()
  * 生产环境 绕过禁用 http://127.0.0.1:5173/?vvtk=vite_vue3  可自行配置tkName的key 和 md5的原始值
  */
 export const useDevtool = () => {
-	if (!isDevMode()) {
+	if (getEnvMode() == 'production') {
 		DisableDevtool({
 			md5: 'bba8318a4b4a5ba44aec00e06ebf5409',
 			url: 'about:blank',
