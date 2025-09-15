@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="h-screen flex justify-center p-8">
+		<div class="h-screen flex justify-center p-4">
 			<div class="w-full flex flex-col">
 				<LoginTitle />
 				<LoginForm />

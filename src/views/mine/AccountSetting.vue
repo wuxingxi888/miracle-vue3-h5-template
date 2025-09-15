@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<NavBar />
+		<custom-nav-bar />
 		<mi-field
 			v-model="username"
 			label="用户名"
@@ -34,7 +34,6 @@
 </template>
 
 <script setup lang="ts">
-	import NavBar from './components/NavBar.vue'
 	import { useUserStore } from '@/store/modules/user'
 
 	const userStore = useUserStore()
@@ -53,3 +52,4 @@
 		color: var(--mi-text-color-2);
 	}
 </style>
+bg-cover h-15 w-25

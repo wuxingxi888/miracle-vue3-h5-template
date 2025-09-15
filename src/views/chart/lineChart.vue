@@ -1,5 +1,5 @@
 <template>
-	<div class="my-card m-40px rounded-2xl p-30px shadow-xl">
+	<div class="my-card m-[20px] rounded-2xl p-[30px] shadow-xl">
 		<div
 			ref="chartRef"
 			:style="{ height: '350px' }"
@@ -16,7 +16,8 @@
 
 	const chartOptions: EChartsOption = {
 		title: {
-			text: 'Stacked Area Chart'
+			text: 'Stacked Area Chart',
+			top: '1%'
 		},
 		tooltip: {
 			trigger: 'axis',
@@ -33,7 +34,9 @@
 		},
 		toolbox: {
 			feature: {
-				saveAsImage: {}
+				saveAsImage: {
+					show: true
+				}
 			}
 		},
 		grid: {

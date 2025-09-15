@@ -1,4 +1,4 @@
-import { defineConfig, presetAttributify, presetTypography, presetUno, presetWebFonts } from 'unocss'
+import { defineConfig, presetAttributify, presetTypography, presetWind3, presetWebFonts } from 'unocss'
 import presetIcons from '@unocss/preset-icons'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 import transformerVariantGroup from '@unocss/transformer-variant-group'
@@ -15,7 +15,7 @@ export default defineConfig({
 		 * UnoCSS 预设
 		 * @see https://unocss.dev/presets/
 		 */
-		presetUno(),
+		presetWind3(),
 
 		/**
 		 * rem转px预设 (unoCss默认单位为rem,模版使用vw/vh适配，需要转成px，然后由postcss把px转成 vw/vh)

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<NavBar />
+		<custom-nav-bar />
 		<mi-divider>基本信息</mi-divider>
 		<mi-field
 			label="头像"
@@ -71,7 +71,7 @@
 			<template #input>
 				<UploaderImage>
 					<mi-image
-						class="cover h-15 w-25"
+						class="bg-cover h-15 w-25"
 						fit="cover"
 						:src="cover ? cover : avatar"
 					/>
@@ -122,7 +122,6 @@
 
 <script setup lang="ts">
 	import { showToast } from '@miracle-web/ui'
-	import NavBar from './components/NavBar.vue'
 	import UploaderImage from './components/UploaderImage.vue'
 	import type { FormColumns } from './pickColumns'
 	import { genderColumns, industryColumns } from './pickColumns'

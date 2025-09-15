@@ -19,6 +19,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 
+	@include scrollbar;
 
 	@include useTheme() {
 		background-color: getVar('main-bg-color');

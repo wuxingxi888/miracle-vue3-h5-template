@@ -1,10 +1,10 @@
 <template>
 	<div>
-		<NavBar>
+		<custom-nav-bar>
 			<template #right>
 				<span @click="handleNickname">保存</span>
 			</template>
-		</NavBar>
+		</custom-nav-bar>
 		<mi-form ref="formRef">
 			<mi-field
 				v-model="formValue.nickname"
@@ -30,7 +30,6 @@
 <script setup lang="ts">
 	import type { FormInstance } from '@miracle-web/ui'
 	import { showToast } from '@miracle-web/ui'
-	import NavBar from './components/NavBar.vue'
 	import { useUserStore } from '@/store/modules/user'
 
 	const userStore = useUserStore()

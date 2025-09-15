@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<NavBar />
+		<custom-nav-bar />
 		<mi-divider>主题模式</mi-divider>
 		<mi-cell-group inset>
 			<mi-cell
@@ -92,7 +92,6 @@
 </template>
 
 <script setup lang="ts">
-	import NavBar from './components/NavBar.vue'
 	import { useThemeStore } from '@/store/modules/theme'
 	import { useTheme } from '@/hooks/useTheme'
 	import { animates as animateOptions } from '@/utils/const/theme'

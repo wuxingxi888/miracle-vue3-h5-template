@@ -1,5 +1,5 @@
 <template>
-	<div class="my-card m-40px rounded-2xl p-30px shadow-xl">
+	<div class="my-card m-[20px] rounded-2xl p-[30px] shadow-xl">
 		<div
 			ref="chartRef"
 			:style="{ height: '350px' }"
@@ -19,8 +19,8 @@
 			trigger: 'item'
 		},
 		legend: {
-			top: '5%',
-			left: 'center'
+			top: '1%',
+			left: 'right'
 		},
 		series: [
 			{

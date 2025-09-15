@@ -88,7 +88,7 @@
 		ref="cacheBox"
 	>
 		<!-- Header -->
-		<header class="flex flex-col items-center mt-20">
+		<header class="flex flex-col items-center mt-5">
 			<Logo class="!h-20 !w-20" />
 			<h1 class="title text-darkBlue dark:text-garyWhite mb-4 mt-5 text-center text-2xl font-black">
 				{{ title }}

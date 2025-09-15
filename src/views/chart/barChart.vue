@@ -1,5 +1,5 @@
 <template>
-	<div class="my-card m-40px rounded-2xl p-30px shadow-xl">
+	<div class="my-card m-[20px] rounded-2xl p-[30px] shadow-xl">
 		<div
 			ref="chartRef"
 			:style="{ height: '350px' }"
@@ -22,7 +22,10 @@
 				type: 'shadow' // 'shadow' as default; can also be 'line' or 'shadow'
 			}
 		},
-		legend: {},
+		legend: {
+			top: '1%',
+			left: 'center'
+		},
 		grid: {
 			left: '1%',
 			right: '7%',
