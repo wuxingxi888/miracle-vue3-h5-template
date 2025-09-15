@@ -8,8 +8,7 @@ const { themeMode, themeColor, themeColorList, isPageAnimate, pageAnimateType } 
 
 const { isProdMode } = useEnv()
 
-export const useThemeStore = defineStore({
-	id: 'app-theme-store',
+export const useThemeStore = defineStore('app-theme-store', {
 	state: (): IThemeState => ({
 		themeMode,
 		themeColor,

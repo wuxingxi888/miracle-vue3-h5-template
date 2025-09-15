@@ -30,8 +30,7 @@ interface LoginParams {
 
 const { isProdMode } = useEnv()
 
-export const useUserStore = defineStore({
-	id: 'app-user-store',
+export const useUserStore = defineStore('app-user-store', {
 	state: (): IUserState => ({
 		userInfo: {
 			userId: '',

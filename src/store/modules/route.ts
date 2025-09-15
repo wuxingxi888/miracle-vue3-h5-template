@@ -8,8 +8,7 @@ export interface IRouteState {
 	keepAliveComponents: string[]
 }
 
-export const useRouteStore = defineStore({
-	id: 'app-route-store',
+export const useRouteStore = defineStore('app-route-store', {
 	state: (): IRouteState => ({
 		menus: [],
 		routers: [],

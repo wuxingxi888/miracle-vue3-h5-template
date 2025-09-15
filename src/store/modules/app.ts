@@ -6,8 +6,7 @@ export interface IAppState {
 	openEruda: boolean
 }
 
-export const useAppStore = defineStore({
-	id: 'app-global-store',
+export const useAppStore = defineStore('app-global-store', {
 	state: (): IAppState => ({
 		openEruda: false
 	}),
