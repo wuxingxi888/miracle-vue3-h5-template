@@ -1,11 +1,7 @@
-@use './variables.scss';
-@use './mixin.scss';
-
-@use './common.scss';
-@use 'transition/index.scss' as transition;
-@use 'font/index.scss' as font;
-@use 'entry.scss';
-@use './miracle.scss';
-
-
-
+@forward './variables.scss';
+@forward './theme.scss';
+@forward './mixin.scss';
+@forward './miracle.scss';
+@forward './entry.scss';
+@forward 'transition/index.scss';
+@forward 'font/index.scss';

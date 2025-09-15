@@ -3,30 +3,33 @@
 		:theme="getThemeMode"
 		:theme-vars="getThemeVars()"
 	>
-		<routerView
-			v-slot="{ Component, route }"
-			class="absolute bottom-0 top-0 w-full overflow-hidden"
-		>
-			<transition
-				:name="getTransitionName"
-				mode="out-in"
-				appear
+		<div class="h-screen w-full flex flex-col">
+			<VirtualStatusBar></VirtualStatusBar>
+			<routerView
+				v-slot="{ Component, route }"
+				class="w-full flex-1 overflow-hidden"
 			>
-				<keep-alive :include="keepAliveComponents">
-					<component
-						:is="Component"
-						:key="getFirstLevelRoute(route).name"
-						v-if="getFirstLevelRoute(route).meta.keepAlive"
-					/>
-				</keep-alive>
-			</transition>
+				<transition
+					:name="getTransitionName"
+					mode="out-in"
+					appear
+				>
+					<keep-alive :include="keepAliveComponents">
+						<component
+							:is="Component"
+							:key="getFirstLevelRoute(route).name"
+							v-if="getFirstLevelRoute(route).meta.keepAlive"
+						/>
+					</keep-alive>
+				</transition>
 
-			<component
-				:is="Component"
-				:key="getFirstLevelRoute(route).name"
-				v-if="!getFirstLevelRoute(route).meta.keepAlive"
-			/>
-		</routerView>
+				<component
+					:is="Component"
+					:key="getFirstLevelRoute(route).name"
+					v-if="!getFirstLevelRoute(route).meta.keepAlive"
+				/>
+			</routerView>
+		</div>
 	</mi-config-provider>
 </template>
 

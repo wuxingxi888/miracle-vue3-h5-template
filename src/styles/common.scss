@@ -1,6 +1,3 @@
-@use './variables.scss' as *;
-@use './theme.scss' as *;
-
 body,
 html {
 	height: 100%;
@@ -11,6 +8,7 @@ html {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	box-sizing: content-box;
 }
 
 body {
@@ -20,6 +18,7 @@ body {
 	padding: 0;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
 
 	@include useTheme() {
 		background-color: getVar('main-bg-color');
@@ -35,58 +34,21 @@ body {
 #app {
 	height: 100%;
 	width: 100%;
-	position: relative;
 }
 
 @media screen and (min-width: 576px) {
-	#app {
-		height: 80vh !important;
-		border-radius: 30px;
-		transform: scale(0.8);
-		border: 5px solid #000;
+	body {
 		box-sizing: content-box;
+		padding-top: 30px;
+		overflow: hidden !important;
+		border: 5px solid #000;
+		border-radius: 30px;
+		transform: scale(0.8) !important;
 
-
-		::-webkit-scrollbar-track-piece {
-			background-color: rgba(0, 0, 0, 0);
-			border-left: 1px solid rgba(0, 0, 0, 0);
-		}
-
-		::-webkit-scrollbar {
-			width: 5px;
-			height: 13px;
-			-webkit-border-radius: 5px;
-			-moz-border-radius: 5px;
-			border-radius: 5px;
-		}
-
-		::-webkit-scrollbar-thumb {
-			background-color: rgba(0, 0, 0, 0.2);
-			background-clip: padding-box;
-			-webkit-border-radius: 5px;
-			-moz-border-radius: 5px;
-			border-radius: 5px;
-			min-height: 28px;
-		}
-
-		::-webkit-scrollbar-thumb:hover {
-			background-color: rgba(0, 0, 0, 0.3);
-			-webkit-border-radius: 5px;
-			-moz-border-radius: 5px;
-			border-radius: 5px;
-		}
-	}
-}
-
-// 图片懒加载指令动画
-@keyframes lazy-img-blur-in {
-	0% {
-		filter: blur(12px);
-		opacity: 0;
+		@include scrollbar
 	}
 
-	100% {
-		filter: blur(0);
-		opacity: 1;
+	:deep(.mi-nav-bar--fixed) {
+		top: 30px !important;
 	}
 }

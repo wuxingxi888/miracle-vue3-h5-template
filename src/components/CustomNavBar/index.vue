@@ -38,4 +38,10 @@
 	const onBack = () => JsCallNative.back()
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+	@media screen and (min-width: 576px) {
+		:deep(.mi-nav-bar--fixed) {
+			top: 29px !important;
+		}
+	}
+</style>

@@ -48,7 +48,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
 				scss: {
 					api: 'modern-compiler',
 					charset: false,
-					additionalData: `@use "@/styles/variables.scss" as *;`,
+					additionalData: `@use "@/styles/index.scss" as *;`,
 					modifyVars: {},
 					javascriptEnabled: true
 				}

@@ -7,7 +7,7 @@ import 'virtual:svg-icons-register'
 // 引入nprogress样式
 import 'nprogress/nprogress.css'
 // 引入全局样式
-import '@/styles/index.scss'
+import '@/styles/common.scss'
 
 import NativeCallJs from '@/services/nativeCallJs'
 import { miraclePlugins } from './miracleComponents'

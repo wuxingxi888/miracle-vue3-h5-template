@@ -28,7 +28,7 @@ export function useFormRules(formData?: Recordable) {
 	const getSmsFormRule = computed(() => createRule('请输入短信验证码'))
 	const getMobileFormRule = computed(() => createRule('请输入手机号码'))
 
-	const validatePolicy = async (value: any, _: FieldRule) => {
+	const validatePolicy = async (value: any) => {
 		return !value ? Promise.resolve('勾选后才能注册') : Promise.resolve(true)
 	}
 

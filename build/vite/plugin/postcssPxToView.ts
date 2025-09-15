@@ -21,12 +21,12 @@ export function postcssPxToViewProtConfig(): Plugin {
 		selectorBlackList: ['keep-px'], // 指定不转换为视窗单位的类名 配置表示类名中含有'keep-px'都不会被转换，
 		valueBlackList: ['1px solid'], // 表示属性值包含 '1px solid' 的内容不会转换
 		exclude: [/node_modules/], // 忽略某些文件夹下的文件或特定文件，例如 'node_modules' 下的文件
-		include: [/src/], // 如果设置了include，那将只有匹配到的文件才会被转换
+		// include: [/src/], // 如果设置了include，那将只有匹配到的文件才会被转换
 		landscapeWidth: 1024,
 		// 指定包含块是根包含块的选择器，这种选择器的定位通常是 `fixed`，但是选择器内没有 `position: fixed`
-		rootContainingBlockSelectorList: ['mi-popup--bottom'],
+		rootContainingBlockSelectorList: ['.mi-popup--bottom'],
 		border: true,
 		appContainingBlock: 'auto',
-		necessarySelectorWhenAuto: '#app'
+		necessarySelectorWhenAuto: 'body'
 	})
 }
