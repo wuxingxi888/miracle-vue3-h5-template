@@ -34,6 +34,8 @@
 		"lint": "eslint",
 		"lint:fix": "eslint --fix",
 		"lint:lint-staged": "lint-staged",
+		"deps:check": "pnpm outdated -r",
+		"deps:update": "pnpm update --latest",
 		"preinstall": "npx only-allow pnpm"
 	},
 	"dependencies": {
@@ -119,5 +121,8 @@
 			"path": "node_modules/cz-git"
 		}
 	},
-	"packageManager": "pnpm@9.11.0+sha1.4cd20e68438613738e8f2bc9aece61eaa6b3e649"
+	"engines": {
+		"node": "^20.0.0 || >=22.0.0",
+		"pnpm": ">=9"
+	}
 }
